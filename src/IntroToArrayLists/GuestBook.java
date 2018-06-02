@@ -25,13 +25,16 @@ public class GuestBook implements ActionListener{
 	ArrayList<String> guests = new ArrayList<String>();
 	
 	public static void main(String[] args) {
-		
+		GuestBook run = new GuestBook();
+		run.UI();
 	}
 	//oijoiu
 	public void UI() {
 		frame.setVisible(true);
 		frame.add(panel);
 		panel.add(button);
+		button.addActionListener(this);
+		button2.addActionListener(this);
 		panel.add(button2);
 		button.setText("View Names");
 		button2.setText("Add Names");
@@ -45,6 +48,9 @@ public class GuestBook implements ActionListener{
 		
 		if (e.getSource() == button) {
 			JOptionPane.showMessageDialog(null, guests);
+		}
+		if(e.getSource() == button2) {
+			guests.add(JOptionPane.showInputDialog("Enter A Name"));
 		}
 		
 	}
