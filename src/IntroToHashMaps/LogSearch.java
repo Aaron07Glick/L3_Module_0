@@ -78,13 +78,31 @@ public class LogSearch implements ActionListener{
 		if (pressed == button2) {
 			String search = JOptionPane.showInputDialog("Enter an ID");
 			int realsearch = Integer.parseInt(search);
-			JOptionPane.showMessageDialog(null, hash.get(realsearch));
+			if (hash.containsKey(realsearch) == true) {
+				JOptionPane.showMessageDialog(null, hash.get(realsearch));
+			}
+			else if (hash.containsKey(realsearch)==false) {
+				JOptionPane.showMessageDialog(null, "This ID does not exist");
+			}
 		}
 		if (pressed == button3) {
-			JOptionPane.showMessageDialog(null, hash);
+			String message = null;
+			for (int i : hash.keySet()) {
+				message = "ID: " + i + " Name: " + hash.get(i) + " ";
+				
+			}
+			JOptionPane.showMessageDialog(null, message);
+			
 		}
 		if(pressed == button4) {
-			
+			String remove = JOptionPane.showInputDialog("Enter an ID");
+			int removenum = Integer.parseInt(remove);
+			if (hash.containsKey(removenum) == true) {
+				hash.remove(removenum);
+			}
+			else if (hash.containsKey(removenum) == false) {
+				JOptionPane.showInputDialog("This ID does not exist");
+			}
 		}
 	}
 }
